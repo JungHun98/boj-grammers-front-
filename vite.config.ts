@@ -6,4 +6,5 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],
   },
+  base: '/boj-grammers-front/',
 });
