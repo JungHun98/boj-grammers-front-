@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const CopyButton = styled('button')`
-  position: absolute;
-  top: 1rem;
+  position: fixed;
+  top: 4.5rem;
   right: 1rem;
   padding: 6px 12px;
   background-color: #383838;
