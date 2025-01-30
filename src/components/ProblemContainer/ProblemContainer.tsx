@@ -7,11 +7,10 @@ import { ErrorBox, ProblemH6, Wrapper } from './ProblemContainer.style';
 import { useProblemActions } from '@/store/store';
 
 interface ProblemContainerProps {
-  width: number;
   problemNumber: number;
 }
 
-function ProblemContainer({ width, problemNumber }: ProblemContainerProps) {
+function ProblemContainer({ problemNumber }: ProblemContainerProps) {
   const { updateExampleInput, updateExampleOutput } = useProblemActions();
   const { data, error } = useFetchProblem(problemNumber);
 
@@ -26,11 +25,11 @@ function ProblemContainer({ width, problemNumber }: ProblemContainerProps) {
   }, [data]);
 
   if (error) {
-    return <ErrorBox style={{ width: `${width}%` }}>{error.message}</ErrorBox>;
+    return <ErrorBox>{error.message}</ErrorBox>;
   }
 
   return (
-    <Wrapper style={{ width: `${width}%` }}>
+    <Wrapper>
       {data === null ? (
         <Spinner />
       ) : (

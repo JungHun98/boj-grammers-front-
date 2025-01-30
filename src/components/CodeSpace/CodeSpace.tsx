@@ -5,11 +5,7 @@ import { Wrapper } from './CodeSpace.style';
 import { useLanguage, useCode, useUpdateCode } from '@/store/codeStroe';
 import CopyBlock from '@/components/CopyBlock';
 
-interface CodeSpaceProps {
-  height: number;
-}
-
-function CodeSpace({ height }: CodeSpaceProps) {
+function CodeSpace() {
   const lang = useLanguage();
   const codeSet = useCode();
   const updateCode = useUpdateCode();
@@ -19,7 +15,7 @@ function CodeSpace({ height }: CodeSpaceProps) {
   };
 
   return (
-    <Wrapper height={height}>
+    <Wrapper>
       <CopyBlock code={codeSet} />
       <CodeMirror
         value={codeSet}

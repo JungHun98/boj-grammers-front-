@@ -1,31 +1,19 @@
-import { DragEventHandler, useState } from 'react';
-import { Gutter, RunSection, Wrapper } from './SolutionContainer.styles';
+import { Wrapper } from './SolutionContainer.styles';
 import CodeSpace from '@/components/CodeSpace';
 import ExcutionResult from '@/components/ExcutionResult';
+import VirticalResizingBox from '../common/ResizingBox/VirticalResizingBox';
 
 interface SolutionContainerProps {
-  width: number;
   problemNumber: number;
 }
 
-function SolutionContainer({ width, problemNumber }: SolutionContainerProps) {
-  const [upHeigth, setUpHeigth] = useState(60);
-
-  const handleVirticalDrag: DragEventHandler = (e) => {
-    const newUpHegith = (e.clientY / window.innerHeight) * 100;
-    if (newUpHegith > 5 && newUpHegith < 95) {
-      // 최소, 최대 너비 설정
-      setUpHeigth(newUpHegith);
-    }
-  };
-
+function SolutionContainer({ problemNumber }: SolutionContainerProps) {
   return (
-    <Wrapper style={{ width: `${100 - width}%` }}>
-      <RunSection>
-        <CodeSpace height={upHeigth} />
-        <Gutter draggable="true" onDrag={handleVirticalDrag}></Gutter>
-        <ExcutionResult key={problemNumber} height={upHeigth} />
-      </RunSection>
+    <Wrapper>
+      <VirticalResizingBox initialTopRatio={0.6}>
+        <CodeSpace />
+        <ExcutionResult key={problemNumber} />
+      </VirticalResizingBox>
     </Wrapper>
   );
 }

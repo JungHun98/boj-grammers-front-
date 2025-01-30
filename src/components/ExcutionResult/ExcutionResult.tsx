@@ -4,17 +4,13 @@ import useSocket from '@/hooks/useSocket';
 import { useExampleInput, useExampleOutput } from '@/store/store';
 import ResultTable from '@/components/ResultTable';
 
-interface ExcutionResultProps {
-  height: number;
-}
-
 interface ResultInfo {
   input: string;
   output: string;
   result: string | null;
 }
 
-function ExcutionResult({ height }: ExcutionResultProps) {
+function ExcutionResult() {
   const socket = useSocket(import.meta.env.VITE_APP_URL);
   const [error, setError] = useState<string | null>(null);
   const [excuteResult, setExcuteResult] = useState<string | null[]>([]);
@@ -58,7 +54,7 @@ function ExcutionResult({ height }: ExcutionResultProps) {
   }, [socket]);
 
   return (
-    <Wrapper style={{ height: `calc(${100 - height}% - 15px)` }}>
+    <Wrapper>
       {error === null && excuteResult.length === 0 ? (
         <h3>여기에 실행 결과가 표시됩니다.</h3>
       ) : error !== null ? (
