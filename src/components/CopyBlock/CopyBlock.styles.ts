@@ -25,4 +25,8 @@ export const CopyButton = styled('button')`
     position: absolute;
     top: 1rem;
   }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;

@@ -15,4 +15,8 @@ export const Wrapper = styled('div')`
   & .cm-theme * {
     background-color: transparent;
   }
+
+  @media (max-width: 768px) {
+    height: auto !important;
+  }
 `;
