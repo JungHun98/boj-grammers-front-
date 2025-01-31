@@ -18,5 +18,7 @@ export const ErrorBox = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
   color: #b2c0cc;
 `;
