@@ -21,6 +21,10 @@ export const seconderyStyle = css`
   &: hover {
     background-color: #383838;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const primaryStyle = css`

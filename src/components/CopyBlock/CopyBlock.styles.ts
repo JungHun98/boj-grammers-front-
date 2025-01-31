@@ -20,4 +20,9 @@ export const CopyButton = styled('button')`
   &: hover {
     background-color: #424242;
   }
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 1rem;
+  }
 `;

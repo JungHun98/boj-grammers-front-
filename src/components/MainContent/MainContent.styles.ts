@@ -5,6 +5,10 @@ export const Wrapper = styled('main')`
   height: calc(100vh - (3.5rem + 3.5625rem));
   background-color: #1e1e1e;
   color: #e0e0e0;
+
+  @media (max-width: 768px) {
+    overflow: auto;
+  }
 `;
 
 export const Gutter = styled('div')`
