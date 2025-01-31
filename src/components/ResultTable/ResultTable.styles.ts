@@ -27,6 +27,7 @@ export const Table = styled('table')`
 export const TablePre = styled('pre')`
   margin: 0;
   background-color: #2d2d2d;
+  padding-left: 0;
 `;
 
 export const Success = styled('span')`
