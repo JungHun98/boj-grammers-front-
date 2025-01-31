@@ -38,4 +38,5 @@ export const Fail = styled('pre')`
   margin: 0;
   background-color: #2d2d2d;
   color: red;
+  padding-left: 0;
 `;
