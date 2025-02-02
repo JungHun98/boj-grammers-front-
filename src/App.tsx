@@ -1,4 +1,5 @@
 import './Main.css';
+import { Analytics } from '@vercel/analytics/react';
 import { useState } from 'react';
 import Problem from './routes/problem';
 import Modal from '@/components/common/Modal';
@@ -41,6 +42,7 @@ function App() {
       >
         <AdditionalTestCaseModal onClose={handleAdditionalModalClose} />
       </AdditionalModal>
+      <Analytics />
     </>
   );
 }

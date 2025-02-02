@@ -18,6 +18,7 @@
     "@uiw/codemirror-theme-copilot": "^4.21.25",
     "@uiw/codemirror-theme-material": "^4.21.22",
     "@uiw/react-codemirror": "^4.21.21",
+    "@vercel/analytics": "^1.4.1",
     "axios": "^1.6.7",
     "env-cmd": "^10.1.0",
     "lucide-react": "^0.474.0",
