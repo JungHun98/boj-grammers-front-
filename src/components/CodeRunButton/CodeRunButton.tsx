@@ -22,6 +22,8 @@ const containsDangerousCode = (inputString: string) => {
     /child_process/i, // child_process 모듈
     /rm\s+-rf/i, // rm -rf 명령어
     /process\.exec/i, // process.exec() 호출
+    /Process/i,
+    /invoke/i,
   ];
 
   // 패턴 검사
