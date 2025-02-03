@@ -39,7 +39,6 @@ function ExcutionResult() {
   useEffect(() => {
     if (socket !== null) {
       socket.on('start', (data) => {
-        updateRunningState(true);
         setError(null);
         setExcuteResult(data);
       });
