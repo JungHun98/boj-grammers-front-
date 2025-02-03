@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Main {
   public static void main(String[] args) throws Exception {
-    
+    System.out.println("Hello world!");
   }
 }`,
   cpp: `#include <iostream>
@@ -14,6 +14,7 @@ public class Main {
 using namespace std;
 
 int main(){
-  
+  cout << "Hello world!" << endl;
+  return 0;
 }`,
 };
