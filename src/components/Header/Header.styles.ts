@@ -10,3 +10,8 @@ export const Wrapper = styled('header')`
   padding: 8px;
   border-bottom: 1px solid #404040;
 `;
+
+export const Flex = styled('div')`
+  display: flex;
+  gap: 0.5rem;
+`;
