@@ -56,6 +56,8 @@ function CodeRunButton() {
       return;
     }
 
+    if (socket === null) return;
+
     updateIsRunning(true);
     socket.emit('codeRun', { code, lang, input });
   };
