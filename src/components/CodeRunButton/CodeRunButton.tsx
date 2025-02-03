@@ -1,6 +1,6 @@
 import { Button } from '@/components/common/Button';
 import useSocket from '@/hooks/useSocket';
-import { useLanguage, useCode } from '@/store/codeStroe';
+import { useLanguage, useCode, useIsRunning } from '@/store/codeStroe';
 import { useExampleInput } from '@/store/store';
 import { css } from '@emotion/css';
 
@@ -40,6 +40,7 @@ function CodeRunButton() {
   const lang = useLanguage();
   const code = useCode();
   const input = useExampleInput();
+  const isRunning = useIsRunning();
 
   const handleClickButton = () => {
     if (containsDangerousCode(code)) {
@@ -50,7 +51,7 @@ function CodeRunButton() {
   };
 
   return (
-    <Button onClick={handleClickButton} className={style}>
+    <Button onClick={handleClickButton} className={style} disabled={isRunning}>
       코드 실행
     </Button>
   );

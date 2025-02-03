@@ -3,6 +3,7 @@ import { ErrorPre, Wrapper } from './ExcutionResult.styles';
 import useSocket from '@/hooks/useSocket';
 import { useExampleInput, useExampleOutput } from '@/store/store';
 import ResultTable from '@/components/ResultTable';
+import { useUpdateIsRunning } from '@/store/codeStroe';
 
 interface ResultInfo {
   input: string;
@@ -13,10 +14,11 @@ interface ResultInfo {
 function ExcutionResult() {
   const socket = useSocket(import.meta.env.VITE_APP_URL);
   const [error, setError] = useState<string | null>(null);
-  const [excuteResult, setExcuteResult] = useState<string | null[]>([]);
+  const [excuteResult, setExcuteResult] = useState<string[] | null[]>([]);
 
   const exampleInput = useExampleInput();
   const exampleOutput = useExampleOutput();
+  const updateRunningState = useUpdateIsRunning();
 
   const makeRsultTable = () => {
     const resultArray: ResultInfo[] = Array(excuteResult.length);
@@ -37,6 +39,7 @@ function ExcutionResult() {
   useEffect(() => {
     if (socket !== null) {
       socket.on('start', (data) => {
+        updateRunningState(true);
         setError(null);
         setExcuteResult(data);
       });
@@ -44,11 +47,15 @@ function ExcutionResult() {
       socket.on('output', (data) => {
         setError(null);
         setExcuteResult(data);
+        if (data.every((elem: string[] | null[]) => elem !== null)) {
+          updateRunningState(false);
+        }
       });
 
       socket.on('error', (data) => {
         const result = data.split('\n').slice(1).join('\n');
         setError(result);
+        updateRunningState(false);
       });
     }
   }, [socket]);
