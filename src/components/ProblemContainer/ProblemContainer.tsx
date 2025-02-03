@@ -37,6 +37,7 @@ function ProblemContainer({ problemNumber }: ProblemContainerProps) {
           <div>
             <h3>{data.title}</h3>
           </div>
+          <ProblemSection title="" html={data.limitTableHtml} />
           <ProblemSection title="문제설명" html={data.descriptionHtml} />
           <ProblemSection title="입력" html={data.inputHtml} />
           <ProblemSection title="출력" html={data.outputHtml} />

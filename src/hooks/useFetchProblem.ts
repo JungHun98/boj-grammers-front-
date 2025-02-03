@@ -12,6 +12,7 @@ interface ExampleInputOutput {
 interface ProblemContent {
   title: string;
   descriptionHtml: string;
+  limitTableHtml: string;
   inputHtml: string;
   outputHtml: string;
   limitHtml: string;
