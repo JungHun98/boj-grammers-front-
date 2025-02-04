@@ -2,11 +2,11 @@ import { Button } from '@/components/common/Button';
 import useSocket from '@/hooks/useSocket';
 import {
   useLanguage,
-  useCode,
   useIsRunning,
   useUpdateIsRunning,
 } from '@/store/codeStroe';
 import { useExampleInput } from '@/store/store';
+import { useCode } from '@/context/CodeContext';
 import { css } from '@emotion/css';
 
 const style = css`
@@ -51,7 +51,7 @@ function CodeRunButton() {
   const updateIsRunning = useUpdateIsRunning();
 
   const handleClickButton = () => {
-    if (containsDangerousCode(code)) {
+    if (containsDangerousCode(code[lang])) {
       alert('위험한 코드가 작성되어 있어요.');
       return;
     }
@@ -59,7 +59,7 @@ function CodeRunButton() {
     if (socket === null) return;
 
     updateIsRunning(true);
-    socket.emit('codeRun', { code, lang, input });
+    socket.emit('codeRun', { code: code[lang], lang, input });
   };
 
   return (

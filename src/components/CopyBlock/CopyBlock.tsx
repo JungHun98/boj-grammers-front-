@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { CopyButton } from './CopyBlock.styles';
 import { Copy, Check } from 'lucide-react';
+import { useCode, Langauge } from '@/context/CodeContext';
 
 interface CopyBlockProps {
-  code: string;
+  lang: Langauge;
 }
 
-function CopyBlock({ code }: CopyBlockProps) {
+function CopyBlock({ lang }: CopyBlockProps) {
   const [isCopied, setIsCopied] = useState(false);
+  const code = useCode();
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(code);
+      await navigator.clipboard.writeText(code[lang]);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
@@ -20,7 +22,7 @@ function CopyBlock({ code }: CopyBlockProps) {
   };
 
   return (
-    <CopyButton onClick={copyToClipboard}>
+    <CopyButton onClick={copyToClipboard} disabled={isCopied}>
       {isCopied ? (
         <>
           <Check size={14} />
