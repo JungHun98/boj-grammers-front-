@@ -13,14 +13,16 @@ function ProblemSearch() {
   const placeholderText = '백준 문제 번호를 입력해주세요.';
 
   const handleSearch = () => {
-    const inputValue = Number(inputRef.current!.value);
+    if (inputRef.current === null) return;
 
-    if (isNaN(inputValue)) {
-      alert('문제 번호에 숫자만 입력해주세요.');
+    const inputValue = inputRef.current.value;
+
+    if (isNaN(+inputValue) || inputValue.trim().length === 0) {
+      alert('문제 번호에 숫자를를 입력해주세요.');
       return;
     }
 
-    updateProblemNumber(inputValue);
+    updateProblemNumber(+inputValue);
   };
 
   const handleSubmitSearch: FormEventHandler<HTMLFormElement> = (e) => {
