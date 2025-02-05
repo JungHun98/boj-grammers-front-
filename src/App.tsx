@@ -1,6 +1,6 @@
 import './Main.css';
 import { Analytics } from '@vercel/analytics/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Problem from './routes/problem';
 import Modal from '@/components/common/Modal';
 import TestCaseModal from '@/components/TestCaseModal';
@@ -10,6 +10,18 @@ import AdditionalTestCaseModal from '@/components/AdditionalTestCaseModal';
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAdditionalOpen, setAdditionalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   const handleModalClose = () => {
     setIsOpen(false);
