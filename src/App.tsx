@@ -6,6 +6,7 @@ import Modal from '@/components/common/Modal';
 import TestCaseModal from '@/components/TestCaseModal';
 import AdditionalModal from '@/components/common/AdditionalModal';
 import AdditionalTestCaseModal from '@/components/AdditionalTestCaseModal';
+import Snackbar from './components/common/Snackbar';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +55,7 @@ function App() {
       >
         <AdditionalTestCaseModal onClose={handleAdditionalModalClose} />
       </AdditionalModal>
+      <Snackbar />
       <Analytics />
     </>
   );

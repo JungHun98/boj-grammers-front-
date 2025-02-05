@@ -8,6 +8,7 @@ import {
 import { useExampleInput } from '@/store/store';
 import { useCode } from '@/context/CodeContext';
 import { css } from '@emotion/css';
+import openSnackBar from '@/utils/openSnackBar';
 
 const style = css`
   background-color: #2d5a27;
@@ -34,7 +35,7 @@ const containsDangerousCode = (inputString: string) => {
   // 패턴 검사
   for (const pattern of forbiddenPatterns) {
     if (pattern.test(inputString)) {
-      return true; // 위험한 코드가 발견됨
+      return pattern; // 위험한 코드가 발견됨
     }
   }
 
@@ -51,12 +52,20 @@ function CodeRunButton() {
   const updateIsRunning = useUpdateIsRunning();
 
   const handleClickButton = () => {
-    if (containsDangerousCode(code[lang])) {
-      alert('위험한 코드가 작성되어 있어요.');
+    if (socket === null) {
+      openSnackBar('서버와 연결중에요. 잠시 기다려주세요.');
       return;
     }
 
-    if (socket === null) return;
+    if (containsDangerousCode(code[lang])) {
+      openSnackBar('위험한 코드가 작성되어 있어요.');
+      return;
+    }
+
+    if (code[lang].trim().length === 0) {
+      openSnackBar('실행할 코드가 없어요.');
+      return;
+    }
 
     updateIsRunning(true);
     socket.emit('codeRun', { code: code[lang], lang, input });

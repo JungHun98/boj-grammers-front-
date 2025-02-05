@@ -5,6 +5,7 @@ import {
   Wrapper,
 } from './ProblemSearch.style';
 import { useProblemActions } from '@/store/store';
+import openSnackBar from '@/utils/openSnackBar';
 
 function ProblemSearch() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -18,7 +19,7 @@ function ProblemSearch() {
     const inputValue = inputRef.current.value;
 
     if (isNaN(+inputValue) || inputValue.trim().length === 0) {
-      alert('문제 번호에 숫자를를 입력해주세요.');
+      openSnackBar('검색창에 숫자만 입력해주세요.');
       return;
     }
 
