@@ -30,6 +30,11 @@ const containsDangerousCode = (inputString: string) => {
     /process\.exec/i, // process.exec() 호출
     /Process/i,
     /invoke/i,
+    /ProcessBuilder/i,
+    /<filesystem>/i,
+    /<cstdlib>/i,
+    /import subprocess/i,
+    /readdir/i,
   ];
 
   // 패턴 검사
