@@ -9,12 +9,17 @@ interface ResultTableProps {
 
 function ResultTable({ input, output, result }: ResultTableProps) {
   const compareResult = () => {
-    const outputArr = output.split('\n');
-    const resultArr = result!.split('\n');
+    let outputArr = output.split('\n');
+    let resultArr = result!.split('\n');
 
-    return outputArr.every(
-      (str, index) => str.trim() === resultArr[index].trim(),
-    );
+    while (resultArr[resultArr.length - 1] === '') {
+      resultArr.pop();
+    }
+
+    outputArr = outputArr.map((elem) => elem.trim());
+    resultArr = resultArr.map((elem) => elem.trim());
+
+    return outputArr.join('\n') === resultArr.join('\n');
   };
 
   return (
