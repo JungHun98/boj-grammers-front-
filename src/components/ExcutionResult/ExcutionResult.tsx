@@ -4,6 +4,7 @@ import useSocket from '@/hooks/useSocket';
 import { useExampleInput, useExampleOutput } from '@/store/store';
 import ResultTable from '@/components/ResultTable';
 import { useUpdateIsRunning } from '@/store/codeStroe';
+import openSnackBar from '@/utils/openSnackBar';
 
 interface ResultInfo {
   input: string;
@@ -51,8 +52,16 @@ function ExcutionResult() {
         }
       });
 
+      socket.on('warning', (data) => {
+        openSnackBar(data);
+        setError(null);
+        setExcuteResult([]);
+        updateRunningState(false);
+      });
+
       socket.on('error', (data) => {
         const result = data.split('\n').slice(1).join('\n');
+
         setError(result);
         updateRunningState(false);
       });
