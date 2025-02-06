@@ -22,6 +22,7 @@ const style = css`
 const containsDangerousCode = (inputString: string) => {
   // 위험한 패턴 목록
   const forbiddenPatterns = [
+    /(system\s*\()|(popen\s*\()|(Runtime\.getRuntime\(\)\.exec)|ProcessBuilder|subprocess\.run|os\.system|child_process|execSync|spawn/,
     /eval\(/i, // eval() 호출
     /exec\(/i, // exec() 호출
     /os\.system\(/i, // os.system() 호출
