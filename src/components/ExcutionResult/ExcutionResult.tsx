@@ -45,9 +45,12 @@ function ExcutionResult() {
       });
 
       socket.on('output', (data) => {
-        setError(null);
         setExcuteResult(data);
-        if (data.every((elem: string[] | null[]) => elem !== null)) {
+
+        if (
+          data.every((elem: string[] | null[]) => elem !== null) ||
+          error !== null
+        ) {
           updateRunningState(false);
         }
       });
