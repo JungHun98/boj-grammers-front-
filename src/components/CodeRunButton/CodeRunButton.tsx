@@ -25,13 +25,10 @@ const containsDangerousCode = (inputString: string) => {
     /(system\s*\()|(popen\s*\()|(Runtime\.getRuntime\(\)\.exec)|ProcessBuilder|subprocess\.run|os\.system|child_process|execSync|spawn/,
     /eval\(/i, // eval() 호출
     /exec\(/i, // exec() 호출
-    /os\.system\(/i, // os.system() 호출
-    /child_process/i, // child_process 모듈
     /rm\s+-rf/i, // rm -rf 명령어
     /process\.exec/i, // process.exec() 호출
     /Process/i,
-    /invoke/i,
-    /ProcessBuilder/i,
+    /invoke\(/i,
     /<filesystem>/i,
     /<cstdlib>/i,
     /import subprocess/i,
