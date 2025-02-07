@@ -103,9 +103,7 @@ function ExcutionResult() {
       });
 
       socket.on('error', (data) => {
-        const result = data.split('\n').slice(1).join('\n');
-
-        setError(result);
+        setError(data);
         updateRunningState(false);
       });
     }
