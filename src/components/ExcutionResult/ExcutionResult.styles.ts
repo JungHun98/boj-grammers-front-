@@ -23,3 +23,13 @@ export const ErrorPre = styled('pre')`
   font-weight: 600;
   background-color: transparent;
 `;
+
+export const NetworkConment = styled('div')`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #8b949e;
+`;
