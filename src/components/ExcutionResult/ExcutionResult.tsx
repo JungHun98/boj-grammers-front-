@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ErrorPre, Wrapper, NetworkConment } from './ExcutionResult.styles';
 import useSocket from '@/hooks/useSocket';
 import { useExampleInput, useExampleOutput } from '@/store/store';
@@ -61,7 +61,7 @@ function ExcutionResult() {
   const exampleOutput = useExampleOutput();
   const updateRunningState = useUpdateIsRunning();
 
-  const makeRsultTable = () => {
+  const makeRsultTable = useMemo(() => {
     const resultArray: ResultInfo[] = Array(excuteResult.length);
 
     for (let i = 0; i < excuteResult.length; i++) {
@@ -75,7 +75,7 @@ function ExcutionResult() {
     return resultArray.map((info, index) => (
       <ResultTable key={index} {...info} />
     ));
-  };
+  }, [excuteResult]);
 
   useEffect(() => {
     if (socket !== null) {
@@ -122,7 +122,7 @@ function ExcutionResult() {
       ) : error !== null ? (
         <ErrorPre>{error}</ErrorPre>
       ) : (
-        makeRsultTable()
+        makeRsultTable
       )}
     </Wrapper>
   );
