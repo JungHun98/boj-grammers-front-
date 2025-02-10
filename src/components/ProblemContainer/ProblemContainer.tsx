@@ -3,8 +3,9 @@ import useFetchProblem from '@/hooks/useFetchProblem';
 import Example from '@/components/Example';
 import ProblemSection from '@/components/ProblemSection';
 import Spinner from '@/components/Spinner';
-import { ErrorBox, ProblemH6, Wrapper } from './ProblemContainer.style';
+import { ProblemH6, Wrapper } from './ProblemContainer.style';
 import { useProblemActions } from '@/store/store';
+import { AxiosError } from 'axios';
 
 interface ProblemContainerProps {
   problemNumber: number;
@@ -25,7 +26,7 @@ function ProblemContainer({ problemNumber }: ProblemContainerProps) {
   }, [data]);
 
   if (error) {
-    return <ErrorBox>{error.message}</ErrorBox>;
+    throw error as AxiosError;
   }
 
   return (

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { requestProblem } from '@/apis/problemApi';
-import { AxiosError } from 'axios';
 
 interface ExampleInputOutput {
   explain: string;
@@ -31,17 +30,8 @@ function useFetchProblem(pId: number): {
       try {
         const response = await requestProblem(pId);
         setData(response.data);
-      } catch (err: unknown) {
-        let error = err as Error;
-
-        if (err instanceof AxiosError) {
-          if (err.response?.status === 404) {
-            error = new Error('존재하지 않는 문제 번호입니다.');
-          } else {
-            error = new Error('서버에 문제가 발생했습니다.');
-          }
-        }
-
+      } catch (err) {
+        const error = err as Error;
         setError(error);
       }
     }
