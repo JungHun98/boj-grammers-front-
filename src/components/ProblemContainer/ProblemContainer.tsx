@@ -45,6 +45,20 @@ function ProblemContainer({ problemNumber }: ProblemContainerProps) {
     }
   }, [data]);
 
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (typeof window?.MathJax !== 'undefined') {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (typeof window.MathJax.typeset === 'function') {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        window.MathJax.typeset();
+      }
+    }
+  }, []);
+
   if (data === undefined) return null;
 
   return (

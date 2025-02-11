@@ -90,3 +90,7 @@ pre {
 #problem-info td {
   padding-left: 0;
 }
+
+.mjx-copytext {
+  display: none;
+}
