@@ -43,11 +43,7 @@ function ProblemContainer({ problemNumber }: ProblemContainerProps) {
       updateExampleInput(exampleInput);
       updateExampleOutput(exampleOutput);
     }
-  }, [data]);
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     if (typeof window?.MathJax !== 'undefined') {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -57,7 +53,7 @@ function ProblemContainer({ problemNumber }: ProblemContainerProps) {
         window.MathJax.typeset();
       }
     }
-  }, []);
+  }, [data]);
 
   if (data === undefined) return null;
 
