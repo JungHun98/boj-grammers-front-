@@ -70,13 +70,14 @@ function ProblemContainer({ problemNumber }: ProblemContainerProps) {
         <ProblemSection title="제한" html={data.limitHtml} />
       ) : null}
       {data.examples !== null
-        ? data.examples.map(({ input, number, output }) => {
+        ? data.examples.map(({ input, number, output, explain }) => {
             return (
               <div key={number}>
                 <ProblemH6>예제 입력 {number}</ProblemH6>
                 <Example content={input} />
                 <ProblemH6>예제 출력 {number}</ProblemH6>
                 <Example content={output} />
+                <ProblemSection title="" html={explain} />
               </div>
             );
           })
