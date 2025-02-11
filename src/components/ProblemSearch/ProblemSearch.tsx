@@ -5,10 +5,12 @@ import {
   Wrapper,
 } from './ProblemSearch.style';
 import { useProblemActions } from '@/store/store';
+import { useIsRunning } from '@/store/codeStroe';
 import openSnackBar from '@/utils/openSnackBar';
 
 function ProblemSearch() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const isRunning = useIsRunning();
   const { updateProblemNumber } = useProblemActions();
 
   const placeholderText = '백준 문제 번호를 입력해주세요.';
@@ -28,6 +30,11 @@ function ProblemSearch() {
 
   const handleSubmitSearch: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+
+    if (isRunning) {
+      openSnackBar('코드 실행이 끝날 때까지 기다려주세요.');
+      return;
+    }
     handleSearch();
   };
 
