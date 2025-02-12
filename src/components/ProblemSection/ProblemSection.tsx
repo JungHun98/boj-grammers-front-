@@ -9,7 +9,10 @@ function ProblemSection({ title, html }: ProblemSectionProps) {
   return (
     <div>
       <ProblemH6>{title}</ProblemH6>
-      <div dangerouslySetInnerHTML={{ __html: html }}></div>
+      <div
+        dangerouslySetInnerHTML={{ __html: html }}
+        style={{ lineHeight: '1.7rem' }}
+      ></div>
     </div>
   );
 }
