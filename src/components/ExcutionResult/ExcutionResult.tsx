@@ -109,7 +109,6 @@ function ExcutionResult() {
     }
   }, [socket]);
 
-  console.log(socket);
   return (
     <Wrapper>
       {socket === null ? (
