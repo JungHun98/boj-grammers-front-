@@ -15,7 +15,6 @@ type Action = {
 
 const useCodeStore = create<State & Action>((set) => ({
   language: 'java',
-  code: defaultCode,
   isRunning: false,
   updateLanguage: (language) => set(() => ({ language })),
   updateIsRunning: (isRunning) => set(() => ({ isRunning })),

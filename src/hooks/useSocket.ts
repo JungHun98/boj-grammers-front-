@@ -15,8 +15,6 @@ function createSocket(url: string): Socket {
       if (socketInstance === null) {
         throw new Error('Socket instance is null');
       }
-
-      socketInstance.on('connect', () => {});
     } catch (error) {
       console.error('Failed to initialize Socket.IO:', error);
       throw new Error('Socket.IO initialization failed');
