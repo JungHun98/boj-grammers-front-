@@ -35,6 +35,7 @@ export const Success = styled('span')`
 `;
 
 export const Fail = styled('pre')`
+  text-wrap: auto;
   margin: 0;
   background-color: #2d2d2d;
   color: red;
