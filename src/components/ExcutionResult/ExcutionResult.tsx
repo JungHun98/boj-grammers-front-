@@ -56,7 +56,6 @@ function ExcutionResult() {
   const socket = useSocket(import.meta.env.VITE_APP_URL);
   const [error, setError] = useState<string | null>(null);
   const [excuteResult, setExcuteResult] = useState<string[] | null[]>([]);
-  const [isSocketConnect, setIsSocketConnect] = useState<boolean>(true);
 
   const exampleInput = useExampleInput();
   const exampleOutput = useExampleOutput();
@@ -107,22 +106,14 @@ function ExcutionResult() {
         setError(data);
         updateRunningState(false);
       });
-
-      socket.on('connect', () => {
-        setIsSocketConnect(true);
-      });
-
-      socket.on('disconnect', () => {
-        setIsSocketConnect(false);
-      });
     }
   }, [socket]);
 
   return (
     <Wrapper>
-      {socket === null || !isSocketConnect ? (
+      {socket === null ? (
         <NetworkConment>
-          {NetwortLodingIcon()} 채점 서버 연결끊킴 ...
+          {NetwortLodingIcon()} 네트워크 연결중 ...
         </NetworkConment>
       ) : null}
       {error === null && excuteResult.length === 0 ? (
