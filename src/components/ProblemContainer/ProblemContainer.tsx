@@ -27,6 +27,19 @@ interface ProblemContent {
   examples: ExampleInputOutput[];
 }
 
+const hydrateMathJax = () => {
+  if (typeof window?.MathJax !== 'undefined') {
+    console.log(typeof window.MathJax.typeset);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (typeof window.MathJax.typeset === 'function') {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      window.MathJax.typeset();
+    }
+  }
+};
+
 function ProblemContainer({ problemNumber }: ProblemContainerProps) {
   const { updateExampleInput, updateExampleOutput } = useProblemActions();
 
@@ -42,6 +55,7 @@ function ProblemContainer({ problemNumber }: ProblemContainerProps) {
 
       updateExampleInput(exampleInput);
       updateExampleOutput(exampleOutput);
+      hydrateMathJax();
     }
   }, [data]);
 
