@@ -13,7 +13,7 @@ export const ERROR_CODE: ErrorCodeType = {
       '서버가 응답하지 않습니다.\n프로그램을 재시작하거나 관리자에게 연락하세요.',
   },
   ECONNABORTED: {
-    code: '',
+    code: '(╥﹏╥)',
     message: '요청 시간을 초과했습니다.',
   },
 
