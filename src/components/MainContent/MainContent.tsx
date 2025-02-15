@@ -14,7 +14,7 @@ function MainContent() {
     <>
       <Wrapper>
         <HorizonResizingBox initialLeftRatio={0.4}>
-          <ErrorBoundary key={problemNumber}>
+          <ErrorBoundary key={`problem_${problemNumber}`}>
             <Suspense fallback={<Spinner />}>
               <ProblemContainer problemNumber={problemNumber} />
             </Suspense>

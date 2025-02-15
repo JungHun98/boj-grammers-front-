@@ -12,7 +12,7 @@ function SolutionContainer({ problemNumber }: SolutionContainerProps) {
     <Wrapper>
       <VirticalResizingBox initialTopRatio={0.6}>
         <CodeSpace />
-        <ExcutionResult key={problemNumber} />
+        <ExcutionResult key={`result_${problemNumber}`} />
       </VirticalResizingBox>
     </Wrapper>
   );
