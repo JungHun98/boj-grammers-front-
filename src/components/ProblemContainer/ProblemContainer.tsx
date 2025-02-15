@@ -29,7 +29,6 @@ interface ProblemContent {
 
 const hydrateMathJax = () => {
   if (typeof window?.MathJax !== 'undefined') {
-    console.log(typeof window.MathJax.typeset);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (typeof window.MathJax.typeset === 'function') {
